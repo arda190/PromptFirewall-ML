@@ -7,6 +7,7 @@ algorithms can detect prompt injection attacks against Large
 Language Models.
 
 ## Motivation
+
 Large Language Models (LLMs) are vulnerable to prompt injection attacks, where malicious instructions attempt to manipulate the model's behavior or bypass safety mechanisms. Detecting these attacks before they reach an LLM is an important challenge in AI security.
 
 This project investigates whether classical Natural Language Processing (NLP) techniques and machine learning algorithms can accurately identify malicious prompts. Rather than relying solely on modern deep learning models, the project explores interpretable approaches such as TF-IDF, Logistic Regression, and Naive Bayes.
@@ -53,9 +54,11 @@ Prediction
 ```
 
 ## Future Work
+
 This research aims to compare classical machine learning methods with modern NLP approaches and investigate their applicability to prompt injection detection.
 
 ## Implemented from Scratch
+
 This project intentionally implements the following algorithms without using machine learning libraries such as scikit-learn:
 
 - Bag of Words
