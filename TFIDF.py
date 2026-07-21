@@ -1,5 +1,5 @@
 import math
-from my_LogisticRegression import LogisticRegression
+from LogisticRegression import LogisticRegression
 
 
 
