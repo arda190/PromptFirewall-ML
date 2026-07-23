@@ -21,7 +21,7 @@ class NaiveBayes:
                 self.ham_doc+=1
 
     def calculateProbabilitySpam(self,x):
-        spam_probability = self.spam_doc / ( self.spam_doc + self.ham_doc )
+        spam_probability = math.log( self.spam_doc / ( self.spam_doc + self.ham_doc ) )
 
         for index,i in enumerate(x):
             if i!=0:
@@ -31,7 +31,7 @@ class NaiveBayes:
 
 
     def calculateProbabilityHam(self,x):
-        ham_probability = self.ham_doc / (self.spam_doc + self.ham_doc)
+        ham_probability = math.log( self.ham_doc / (self.spam_doc + self.ham_doc) )
 
         for index, i in enumerate(x):
             if i != 0:
