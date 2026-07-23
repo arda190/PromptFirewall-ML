@@ -10,8 +10,7 @@ class NaiveBayes:
         self.ham_count = []
         self.spam_doc = 0
         self.ham_doc = 0
-        self.spam_voc_size = 0
-        self.ham_voc_size = 0
+
 
 
     def classify(self,Y):
@@ -26,7 +25,7 @@ class NaiveBayes:
 
         for index,i in enumerate(x):
             if i!=0:
-                spam_probability *= math.pow(self.spam_prob[index],i)
+                spam_probability += i*math.log(self.spam_prob[index])
 
         return spam_probability
 
@@ -36,7 +35,7 @@ class NaiveBayes:
 
         for index, i in enumerate(x):
             if i != 0:
-                ham_probability *= math.pow(self.ham_prob[index],i)
+                ham_probability += i*math.log(self.ham_prob[index])
 
         return ham_probability
 
@@ -69,11 +68,9 @@ class NaiveBayes:
                if y == 0:
                    self.ham_count[i]+=count
                    self.negative+=count
-                   self.ham_voc_size += 1
                elif y == 1:
                    self.spam_count[i]+=count
                    self.positive+=count
-                   self.spam_voc_size += 1
 
 
 
