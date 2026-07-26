@@ -50,18 +50,3 @@ class LogisticRegression:
             self.weight = self.weight - self.learning_rate * dw
             self.bias = self.bias - self.learning_rate * db
 
-
-x_ = [1,2,3,4,5,6,7,8,9,10]
-
-y_ = [0,0,0,1,0,1,1,1,1,1]
-
-model = LogisticRegression()
-
-model.fit(x_,y_)
-
-x=model.predict(-5)
-print(x)
-
-#print(model.predict(10))
-#print(model.classify(10))
-print(model.classify(-5))
