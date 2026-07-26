@@ -1,6 +1,6 @@
 import string
 from string import *
-from LogisticRegression import LogisticRegression
+from models.LogisticRegression import LogisticRegression
 
 
 class BagOfWords:
