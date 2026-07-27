@@ -95,5 +95,13 @@ class NaiveBayes:
         with open(filename, "w") as f:
             json.dump(data, f, indent=4)
 
+    def load_model(self, filename):
+        with open(filename, "r") as f:
+            data = json.load(f)
+
+        self.spam_prob = data["spam_prob"]
+        self.ham_prob = data["ham_prob"]
+        self.spam_doc = data["spam_doc"]
+        self.ham_doc = data["ham_doc"]
 
 
