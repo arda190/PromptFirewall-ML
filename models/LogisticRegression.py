@@ -68,3 +68,9 @@ class LogisticRegression:
 
         with open(filename, "w") as f:
             json.dump(data, f, indent=4)
+
+    def load_model(self, filename):
+        with open(filename, "r") as f:
+            data = json.load(f)
+            self.weights = data["weights"]
+            self.bias = data["bias"]
