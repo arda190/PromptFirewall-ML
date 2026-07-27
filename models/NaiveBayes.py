@@ -1,4 +1,5 @@
 import math
+import json
 
 class NaiveBayes:
     def __init__(self):
@@ -83,10 +84,16 @@ class NaiveBayes:
             self.spam_prob[i] = ( self.spam_count[i] + 1 ) / ( self.positive + length_X )
             self.ham_prob[i] = ( self.ham_count[i] + 1 ) / ( self.negative + length_X )
 
+    def save_model(self, filename):
+        data = {
+            "spam_prob": self.spam_prob,
+            "ham_prob": self.ham_prob,
+            "spam_doc": self.spam_doc,
+            "ham_doc": self.ham_doc
+        }
 
-
-
-
+        with open(filename, "w") as f:
+            json.dump(data, f, indent=4)
 
 
 
