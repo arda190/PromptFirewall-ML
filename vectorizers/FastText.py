@@ -19,6 +19,10 @@ class FastTextVectorizer:
 
 
     def transform(self,sentences):
+
+        if self.model is None:
+            raise ValueError("FastTextVectorizer has not been trained yet.")
+
         vectors = []
 
         for sentence in sentences:
