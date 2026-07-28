@@ -11,35 +11,40 @@ dataset = []
 
 #jailbreak
 
-for template in  jailbreak_templates:
+for template in jailbreak_templates:
     for target in jailbreak_topics:
-        dataset.append(template.format(target,0))
+        sentence = template.format(target)
+        dataset.append((sentence, 1))
 
 
 #benign
 
 for template in benign_templates:
     for topic in benign_topics:
-        dataset.append(template.format(topic,0))
+        sentence = template.format(topic)
+        dataset.append((sentence, 0))
 
 #prompt leak
 
 for template in promptleak_templates:
     for target in promptleak_targets:
-        dataset.append(template.format(target,1))
+        sentence = template.format(target)
+        dataset.append((sentence, 1))
 
 #roleplay
 
 for template in roleplay_templates:
     for topic in roleplay_topics:
-        dataset.append(template.format(topic,0))
+        sentence = template.format(topic)
+        dataset.append((sentence, 1))
 
 
 #developer_mode
 
 for template in developer_templates:
     for action in developer_actions:
-        dataset.append(template.format(action,1))
+        sentence = template.format(action)
+        dataset.append((sentence, 1))
 
 
 random.shuffle(dataset)
