@@ -1,7 +1,7 @@
 from gensim.models import Word2Vec
 import numpy as np
 
-class Word2Vectorization:
+class Word2Vectorizer:
     def __init__(self):
         self.model = None
 
