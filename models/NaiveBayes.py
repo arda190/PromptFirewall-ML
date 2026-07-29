@@ -1,5 +1,6 @@
 import math
 import json
+import joblib
 
 class NaiveBayes:
     def __init__(self):
@@ -91,13 +92,10 @@ class NaiveBayes:
             "spam_doc": self.spam_doc,
             "ham_doc": self.ham_doc
         }
-
-        with open(filename, "w") as f:
-            json.dump(data, f, indent=4)
+        joblib.dump(data, filename)
 
     def load_model(self, filename):
-        with open(filename, "r") as f:
-            data = json.load(f)
+        data = joblib.load(filename)
 
         self.spam_prob = data["spam_prob"]
         self.ham_prob = data["ham_prob"]
