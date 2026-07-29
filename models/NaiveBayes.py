@@ -90,7 +90,11 @@ class NaiveBayes:
             "spam_prob": self.spam_prob,
             "ham_prob": self.ham_prob,
             "spam_doc": self.spam_doc,
-            "ham_doc": self.ham_doc
+            "ham_doc": self.ham_doc,
+            "spam_count" : self.spam_count,
+            "ham_count" : self.ham_count,
+            "positive" : self.positive,
+            "negative" : self.negative
         }
         joblib.dump(data, filename)
 
@@ -101,5 +105,10 @@ class NaiveBayes:
         self.ham_prob = data["ham_prob"]
         self.spam_doc = data["spam_doc"]
         self.ham_doc = data["ham_doc"]
+        self.spam_count= data["spam_count"]
+        self.ham_count= data["ham_count"]
+        self.positive = data["positive"]
+        self.negative = data["negative"]
+
 
 
