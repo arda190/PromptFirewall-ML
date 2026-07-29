@@ -1,42 +1,48 @@
 from gensim.models import Word2Vec
+import numpy as np
 
-sentences = [
-    # Original Data
-    ["i", "love", "machine", "learning"],
-    ["machine", "learning", "is", "awesome"],
-    ["i", "love", "python"],
-    ["python", "is", "powerful"],
-
-    # AI & Deep Learning
-    ["deep", "learning", "uses", "neural", "networks"],
-    ["neural", "networks", "learn", "from", "data"],
-    ["artificial", "intelligence", "is", "transforming", "technology"],
-    ["transformers", "are", "popular", "in", "nlp"],
-    ["large", "language", "models", "generate", "text"],
-
-    # Python & Programming
-    ["python", "has", "simple", "syntax"],
-    ["developers", "write", "clean", "code"],
-    ["functions", "return", "values", "in", "python"],
-    ["object", "oriented", "programming", "is", "useful"],
-    ["debugging", "code", "takes", "time"],
-
-    # Data Science & Engineering
-    ["data", "scientists", "analyze", "large", "datasets"],
-    ["pandas", "is", "great", "for", "data", "manipulation"],
-    ["clean", "data", "improves", "model", "performance"],
-    ["visualization", "helps", "understand", "data", "patterns"],
-    ["feature", "engineering", "boosts", "accuracy"]
-]
-
-model = Word2Vec(
-    sentences,
-    vector_size=100,
-    window=5,
-    min_count=1,
-    sg=1,
-    workers=4,
-)
+class Word2Vectorization:
+    def __init__(self):
+        self.model = None
 
 
-print(model.wv.most_similar("machine"))
+
+    def fit(self,sentences):
+        sentences = [sentence.split() for sentence in sentences]
+        self.model = Word2Vec(
+            sentences,
+            vector_size=100,
+            window=5,
+            min_count=1
+        )
+
+    def __sentence_vector(self,sentence):
+        vectors = []
+
+        for word in sentence:
+            if word in self.model.wv:
+                vectors.append(self.model.wv[word])
+
+        return np.mean(vectors, axis=0)
+
+
+    def transform(self,sentences):
+        vectors = []
+        for sentence in sentences:
+            vectors.append(self.__sentence_vector(sentence))
+
+        return vectors
+
+
+    def fit_transform(self,sentences):
+        self.fit(sentences)
+        return self.transform(sentences)
+
+
+
+    def save_model(self,filename):
+        self.model.save(filename)
+
+
+    def load_model(self,path):
+        self.model=Word2Vec.load(path)
