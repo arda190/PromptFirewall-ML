@@ -1,3 +1,5 @@
 gensim
 numpy
 pandas
+scikit-learn
+joblib
