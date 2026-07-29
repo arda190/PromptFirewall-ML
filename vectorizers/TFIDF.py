@@ -1,5 +1,6 @@
 import math
 from models.LogisticRegression import LogisticRegression
+import joblib
 
 
 
@@ -91,4 +92,18 @@ class TFIDF:
         return self.transform(data)
 
 
+
+    def save_model(self,path):
+        data = {
+            "idfValues": self.idfValues,
+            "vocabulary": self.vocabulary,
+        }
+
+        joblib.dump(data,path)
+
+
+    def load_model(self,path):
+        data = joblib.load(path)
+        self.idfValues = data["idfValues"]
+        self.vocabulary = data["vocabulary"]
 
