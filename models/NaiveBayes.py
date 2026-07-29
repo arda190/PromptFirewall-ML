@@ -44,6 +44,8 @@ class NaiveBayes:
 
     def predict(self,x):
 
+        x = x[0]
+
         spam_prob = self.calculateProbabilitySpam(x)
         ham_prob = self.calculateProbabilityHam(x)
 

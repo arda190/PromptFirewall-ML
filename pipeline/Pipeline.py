@@ -20,7 +20,7 @@ class Pipeline:
         input = self.cleaner.clean_text(input)
         X = self.vectorizer.transform([input])
 
-        return self.classifier.predict(X[0])
+        return self.classifier.predict(X)
 
 
     def save_model(self,classifier_name,vectorizer_name):
