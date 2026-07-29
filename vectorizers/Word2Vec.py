@@ -13,7 +13,8 @@ class Word2Vectorization:
             sentences,
             vector_size=100,
             window=5,
-            min_count=1
+            min_count=1,
+            workers=4,
         )
 
     def __sentence_vector(self,sentence):
@@ -29,9 +30,13 @@ class Word2Vectorization:
     def transform(self,sentences):
         vectors = []
         for sentence in sentences:
-            vectors.append(self.__sentence_vector(sentence))
+            words = sentence.split()
+            self.__sentence_vector(words)
 
-        return vectors
+        if len(vectors)==0:
+            return np.zeros(self.model.vector_size)
+
+        return np.array(vectors)
 
 
     def fit_transform(self,sentences):
