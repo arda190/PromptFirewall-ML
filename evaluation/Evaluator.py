@@ -4,6 +4,32 @@ class Evaluator:
     def __init__(self):
         pass
 
+
+    def confusion_matrix(self, y_test,predictions):
+        true_positive = 0
+        true_negative = 0
+        false_positive = 0
+        false_negative = 0
+
+        for i in range(len(y_test)):
+            if y_test[i] == 1:
+                if predictions[i] == 1:
+                    true_positive += 1
+                else:
+                    false_negative += 1
+
+            else:
+                if predictions[i] == 1:
+                    false_positive += 1
+                else:
+                    true_negative += 1
+
+        return true_positive,true_negative,false_positive,false_negative
+
+
+
+
+
     def accuracy(self, y_test,predictions):
         total_test = len(y_test)
         correct = 0
