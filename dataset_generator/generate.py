@@ -5,6 +5,7 @@ from prompt_leak import *
 from roleplay import *
 import random
 import pandas as pd
+from teach import *
 
 
 dataset = []
@@ -47,6 +48,12 @@ for template in developer_templates:
         dataset.append((sentence, 1))
 
 
+for template in teach_templates:
+    for topic in teach_targets:
+        sentence = template.format(topic)
+        dataset.append((sentence, 0))
+
+
 random.shuffle(dataset)
 
 df = pd.DataFrame(
@@ -55,6 +62,6 @@ df = pd.DataFrame(
 )
 
 df.to_csv(
-    "../datasets/generated.csv",
+    "../datasets/generated_2.csv",
     index=False
 )
