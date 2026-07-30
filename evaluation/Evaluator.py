@@ -24,64 +24,67 @@ class Evaluator:
                 else:
                     true_negative += 1
 
-        return true_positive,true_negative,false_positive,false_negative
+        return {
+            "TP": true_positive,
+            "TN": true_negative,
+            "FP": false_positive,
+            "FN": false_negative
+        }
 
 
 
 
 
-    def accuracy(self, y_test,predictions):
-        total_test = len(y_test)
-        correct = 0
+    def accuracy(self, cm):
 
-        for i in range(total_test):
-            if y_test[i] == predictions[i]:
-               correct += 1
+        tp = cm["TP"]
+        tn = cm["TN"]
+        fp = cm["FP"]
+        fn = cm["FN"]
 
-        return correct / total_test
+        return (tp + tn) / (tp + tn + fp + fn)
 
-    def precision(self, y_test,predictions):
-        total_positive = 0
-        true_positive = 0
+    def precision(self, cm):
 
-        for i in range(len(y_test)):
-            if predictions[i] == 1:
-                total_positive += 1
-                if y_test[i] == 1:
-                    true_positive += 1
+        tp = cm["TP"]
+        fp = cm["FP"]
 
-        if total_positive == 0:
+        if tp+fp == 0:
             return 0
 
-        return true_positive / total_positive
+        return  tp / (tp + fp)
 
 
-    def recall(self, y_test,predictions):
+    def recall(self, cm):
 
-        total_positive = 0
-        true_positive = 0
-        false_negative = 0
+        tp = cm["TP"]
+        fn = cm["FN"]
 
-        for i in range(len(y_test)):
-            if y_test[i] == 1:
-               total_positive += 1
-
-               if predictions[i] == 1:
-                  true_positive += 1
-               else:
-                  false_negative += 1
-
-        if total_positive == 0:
+        if tp+fn == 0:
             return 0
 
-        return true_positive / total_positive
+        return tp / (tp + fn)
 
 
-    def f1_score(self, y_test,predictions):
-        precision = self.precision(y_test, predictions)
-        recall = self.recall(y_test, predictions)
+    def f1_score(self,cm):
+        precision = self.precision(cm)
+        recall = self.recall(cm)
 
         if precision + recall == 0:
             return 0
 
         return 2 * precision * recall / (precision + recall)
+
+
+
+    def evaluate(self, y_test, predictions):
+
+        cm = self.confusion_matrix(y_test, predictions)
+
+        return {
+            "accuracy": self.accuracy(cm),
+            "precision": self.precision(cm),
+            "recall": self.recall(cm),
+            "f1_score": self.f1_score(cm),
+            "confusion_matrix": cm
+        }
