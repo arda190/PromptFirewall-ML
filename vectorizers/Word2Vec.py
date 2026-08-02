@@ -17,24 +17,26 @@ class Word2Vectorizer:
             workers=4,
         )
 
-    def __sentence_vector(self,sentence):
+    def __sentence_vector(self, sentence):
         vectors = []
 
         for word in sentence:
             if word in self.model.wv:
                 vectors.append(self.model.wv[word])
 
+        if len(vectors) == 0:
+            return np.zeros(self.model.vector_size)
+
         return np.mean(vectors, axis=0)
 
 
-    def transform(self,sentences):
+    def transform(self, sentences):
         vectors = []
+
         for sentence in sentences:
             words = sentence.split()
-            self.__sentence_vector(words)
-
-        if len(vectors)==0:
-            return np.zeros(self.model.vector_size)
+            vector = self.__sentence_vector(words)
+            vectors.append(vector)
 
         return np.array(vectors)
 
