@@ -1,6 +1,7 @@
 import json
 import os
 import time
+import numpy as np
 
 class Experiment:
     def __init__(self,pipeline,evaluator,filename):
@@ -26,7 +27,13 @@ class Experiment:
         predictions = []
 
         for text in X_test:
-            predictions.append(self.pipeline.predict(text))
+            prediction = self.pipeline.predict(text)
+
+            if isinstance(prediction, np.ndarray):
+                prediction = prediction.item()
+
+            predictions.append(prediction)
+
 
         results = self.evaluator.evaluate(y_test, predictions)
 
@@ -45,7 +52,6 @@ class Experiment:
     def save_experiment(self):
         os.makedirs("experiment_results", exist_ok=True)
         filepath = os.path.join("experiment_results", self.filename)
-
 
         data ={
             "vectorizer": type(self.pipeline.vectorizer).__name__,
