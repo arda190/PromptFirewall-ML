@@ -27,8 +27,6 @@ class BagOfWords:
         self.words = x_
 
 
-        print(self.dictionary)
-
 
     def transform(self,x_):
         features = []
