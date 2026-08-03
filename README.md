@@ -153,7 +153,7 @@ PromptFirewall-ML/
 Clone the repository:
 
 ```bash
-git clone https://github.com/<your-username>/PromptFirewall-ML.git
+git clone https://github.com/arda190/PromptFirewall-ML.git
 cd PromptFirewall-ML
 ```
 
