@@ -10,8 +10,8 @@ from vectorizers.TFIDF import TFIDF
 from vectorizers.Word2Vec import Word2Vectorizer
 from vectorizers.FastText import FastTextVectorizer
 
-from models.NaiveBayes import NaiveBayes
-from models.SupportVectorMachine import SupportVectorMachine
+from models.from_scratch.NaiveBayes import NaiveBayes
+from models.library.SupportVectorMachine import SupportVectorMachine
 
 
 def load_dataset():
