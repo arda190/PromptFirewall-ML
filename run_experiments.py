@@ -5,8 +5,8 @@ from experiment.experiment import Experiment
 from pipeline.Pipeline import Pipeline
 from evaluation.Evaluator import Evaluator
 
-from vectorizers.BagOfWords import BagOfWords
-from vectorizers.TFIDF import TFIDF
+from vectorizers.Custom.BagOfWords import BagOfWords
+from vectorizers.Custom.TFIDF import TFIDF
 from vectorizers.Word2Vec import Word2Vectorizer
 from vectorizers.FastText import FastTextVectorizer
 
