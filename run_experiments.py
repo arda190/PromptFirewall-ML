@@ -7,8 +7,8 @@ from evaluation.Evaluator import Evaluator
 
 from vectorizers.Custom.BagOfWords import BagOfWords
 from vectorizers.Custom.TFIDF import TFIDF
-from vectorizers.Word2Vec import Word2Vectorizer
-from vectorizers.FastText import FastTextVectorizer
+from vectorizers.library.Word2Vec import Word2Vectorizer
+from vectorizers.library.FastText import FastTextVectorizer
 
 from models.from_scratch.NaiveBayes import NaiveBayes
 from models.library.SupportVectorMachine import SupportVectorMachine
