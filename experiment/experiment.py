@@ -59,7 +59,6 @@ class Experiment:
             "train_size": self.train_size,
             "test_size": self.test_size,
             "metrics": self.metrics,
-            "predictions": self.predictions
         }
 
         with open(filepath, "w") as f:
