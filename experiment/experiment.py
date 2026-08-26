@@ -24,6 +24,9 @@ class Experiment:
 
         self.trainig_time = end - start
 
+        self.pipeline.save_model()
+
+
         predictions = []
 
         for text in X_test:
