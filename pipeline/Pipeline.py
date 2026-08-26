@@ -3,10 +3,12 @@ import os
 
 
 class Pipeline:
-    def __init__(self,vectorizer,classifier):
+    def __init__(self,vectorizer,classifier,vectorizer_name,classifier_name):
         self.cleaner = Cleaner()
         self.vectorizer = vectorizer
         self.classifier = classifier
+        self.vectorizer_name = vectorizer_name
+        self.classifier_name = classifier_name
 
 
 
@@ -23,14 +25,14 @@ class Pipeline:
         return self.classifier.predict(X)
 
 
-    def save_model(self,classifier_name,vectorizer_name):
-        classifier_path = os.path.join("saved_models", classifier_name)
-        vectorizer_path = os.path.join("saved_models", vectorizer_name)
+    def save_model(self):
+        classifier_path = os.path.join("saved_models", self.classifier_name)
+        vectorizer_path = os.path.join("saved_models", self.vectorizer_name)
         self.classifier.save_model(classifier_path)
         self.vectorizer.save_model(vectorizer_path)
 
-    def load_model(self,classifier_name,vectorizer_name):
-        classifier_path = os.path.join("saved_models", classifier_name)
-        vectorizer_path = os.path.join("saved_models", vectorizer_name)
+    def load_model(self):
+        classifier_path = os.path.join("saved_models", self.classifier_name)
+        vectorizer_path = os.path.join("saved_models", self.vectorizer_name)
         self.classifier.load_model(classifier_path)
         self.vectorizer.load_model(vectorizer_path)
