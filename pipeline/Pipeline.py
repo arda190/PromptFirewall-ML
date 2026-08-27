@@ -1,21 +1,15 @@
 from preprocessing.Cleaner import Cleaner
 import os
-
+from vectorizers.library.factory import get_vectorizer
+from models.library.model_factory import get_model
 
 class Pipeline:
-    def __init__(self,vectorizer,classifier,vectorizer_name,classifier_name):
+    def __init__(self,vectorizer_path,classifier_path): # path is not an absolute path ,  factory classes will add saved_models/
         self.cleaner = Cleaner()
-        self.vectorizer = vectorizer
-        self.classifier = classifier
-        self.vectorizer_name = vectorizer_name
-        self.classifier_name = classifier_name
+        self.vectorizer = get_vectorizer(vectorizer_path)
+        self.classifier = get_model(classifier_path)
 
 
-
-    def fit(self,X_train,Y_train):
-        X_train = self.cleaner.clean(X_train)
-        X = self.vectorizer.fit_transform(X_train)
-        self.classifier.fit(X,Y_train)
 
 
     def predict(self,input):
@@ -23,16 +17,3 @@ class Pipeline:
         X = self.vectorizer.transform([input])
 
         return self.classifier.predict(X)
-
-
-    def save_model(self):
-        classifier_path = os.path.join("saved_models", self.classifier_name)
-        vectorizer_path = os.path.join("saved_models", self.vectorizer_name)
-        self.classifier.save_model(classifier_path)
-        self.vectorizer.save_model(vectorizer_path)
-
-    def load_model(self):
-        classifier_path = os.path.join("saved_models", self.classifier_name)
-        vectorizer_path = os.path.join("saved_models", self.vectorizer_name)
-        self.classifier.load_model(classifier_path)
-        self.vectorizer.load_model(vectorizer_path)
