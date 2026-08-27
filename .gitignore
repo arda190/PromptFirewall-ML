@@ -226,3 +226,6 @@ experiment_results/*.json
 
 # Logs
 *.out
+
+# for trained models 
+saved_models/
