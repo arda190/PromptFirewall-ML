@@ -1,9 +1,12 @@
+import os.path
+
 from gensim.models import Word2Vec
 import numpy as np
 
 class Word2Vectorizer:
     def __init__(self):
         self.model = None
+        self.name = "Word2Vec"
 
 
 
@@ -51,5 +54,6 @@ class Word2Vectorizer:
         self.model.save(filename)
 
 
-    def load_model(self,path):
+    def load_model(self,path="saved_models/word2vec"):
         self.model=Word2Vec.load(path)
+        return self

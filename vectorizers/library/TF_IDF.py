@@ -9,7 +9,8 @@ class TFIDFVectorizer:
             min_df=min_df,
             max_df=max_df,
             ngram_range=ngram_range
-        )
+        ),
+        self.name = "TF-IDF"
 
     def fit(self, sentences):
         self.vectorizer.fit(sentences)
@@ -24,6 +25,6 @@ class TFIDFVectorizer:
     def save_model(self, filename):
         joblib.dump(self.vectorizer, filename)
 
-    def load_model(self, filename):
+    def load_model(self, filename="saved_models/tf-idf"):
         self.vectorizer = joblib.load(filename)
         return self
