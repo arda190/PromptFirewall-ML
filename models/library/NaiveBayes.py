@@ -33,4 +33,4 @@ class NaiveBayesWrapper:
 
     def load_model(self, path):
         self.model = joblib.load(path)
-        return self
+        return self.model

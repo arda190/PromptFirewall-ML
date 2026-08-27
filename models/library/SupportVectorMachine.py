@@ -23,6 +23,7 @@ class SupportVectorMachineWrapper:
 
     def load_model(self,path):
         self.model = joblib.load(path)
+        return self.model
 
 
     def score(self,x,y):
