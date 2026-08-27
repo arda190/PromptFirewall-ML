@@ -20,6 +20,7 @@ class LogisticRegressionWrapper:
             class_weight=class_weight,
             random_state=random_state
         )
+        self.name = "LogisticRegression"
 
     def fit(self, X, y):
         self.model.fit(X, y)

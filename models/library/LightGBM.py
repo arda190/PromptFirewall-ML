@@ -8,6 +8,7 @@ class LightGBMWrapper:
         self.learning_rate = learning_rate
         self.random_state = random_state
         self.model = None
+        self.name = "LightGBM"
 
 
 

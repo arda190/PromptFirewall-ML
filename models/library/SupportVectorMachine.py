@@ -5,6 +5,7 @@ class SupportVectorMachineWrapper:
     def __init__(self,kernel="linear"):
         self.kernel = kernel
         self.model = None
+        self.name = "SupportVectorMachine"
 
 
     def fit(self,x,y):

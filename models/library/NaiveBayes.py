@@ -13,6 +13,7 @@ class NaiveBayesWrapper:
             fit_prior=self.fit_prior,
             class_prior=self.class_prior
         )
+        self.name = "NaiveBayes"
 
     def fit(self, X, y):
         self.model.fit(X, y)
@@ -27,9 +28,9 @@ class NaiveBayesWrapper:
     def score(self, X, y):
         return self.model.score(X, y)
 
-    def save(self, path):
+    def save_model(self, path):
         joblib.dump(self.model, path)
 
-    def load(self, path):
+    def load_model(self, path):
         self.model = joblib.load(path)
         return self
