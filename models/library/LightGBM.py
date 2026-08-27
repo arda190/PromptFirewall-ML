@@ -1,7 +1,7 @@
 import lightgbm as lgb
 import joblib
 
-class LightGBM:
+class LightGBMWrapper:
     def __init__(self,n_estimators=300,num_leaves=31,learning_rate=0.05,random_state=42):
         self.n_estimators = n_estimators
         self.num_leaves = num_leaves

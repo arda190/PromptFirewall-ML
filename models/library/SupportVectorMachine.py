@@ -1,12 +1,10 @@
 from sklearn.svm import SVC
 import joblib
 
-class SupportVectorMachine:
+class SupportVectorMachineWrapper:
     def __init__(self,kernel="linear"):
         self.kernel = kernel
         self.model = None
-
-
 
 
     def fit(self,x,y):
