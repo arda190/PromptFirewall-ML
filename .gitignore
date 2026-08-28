@@ -226,3 +226,11 @@ experiment_results/*.json
 
 # Logs
 *.out
+
+# for trained models 
+saved_models/
+
+#for dataset
+
+datasets/raw/combined_dataset.csv
+datasets/raw/s_labs_test.csv

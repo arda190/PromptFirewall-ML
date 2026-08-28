@@ -1,8 +1,3 @@
-import string
-from string import *
-from models.LogisticRegression import LogisticRegression
-
-
 class BagOfWords:
     def __init__(self):
         self.words = []

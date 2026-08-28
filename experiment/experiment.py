@@ -2,6 +2,7 @@ import json
 import os
 import time
 import numpy as np
+import time
 
 class Experiment:
     def __init__(self,pipeline,evaluator,filename):
@@ -9,22 +10,17 @@ class Experiment:
         self.evaluator = evaluator
         self.filename = filename
         self.metrics = None
-        self.predictions = None
-        self.trainig_time = None
+        self.test_time = None
         self.train_size = None
         self.test_size = None
 
 
 
-    def run(self, X_train, y_train, X_test, y_test):
-
-        start = time.time()
-        self.pipeline.fit(X_train, y_train)
-        end = time.time()
-
-        self.trainig_time = end - start
+    def run(self,X_train,X_test, y_test):
 
         predictions = []
+
+        start = time.perf_counter()
 
         for text in X_test:
             prediction = self.pipeline.predict(text)
@@ -34,11 +30,13 @@ class Experiment:
 
             predictions.append(prediction)
 
+        end = time.perf_counter()
+
+        self.test_time = end - start
 
         results = self.evaluator.evaluate(y_test, predictions)
 
         self.metrics = results
-        self.predictions = predictions
 
         self.train_size = len(X_train)
         self.test_size =len(X_test)
@@ -59,7 +57,7 @@ class Experiment:
             "train_size": self.train_size,
             "test_size": self.test_size,
             "metrics": self.metrics,
-            "predictions": self.predictions
+            "test_time": f"{self.test_time:.4f} seconds for {self.test_size} samples",
         }
 
         with open(filepath, "w") as f:

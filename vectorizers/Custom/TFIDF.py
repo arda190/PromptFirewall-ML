@@ -1,5 +1,4 @@
 import math
-from models.LogisticRegression import LogisticRegression
 import joblib
 
 

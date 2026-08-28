@@ -1,12 +1,11 @@
 from sklearn.svm import SVC
 import joblib
 
-class SupportVectorMachine:
+class SupportVectorMachineWrapper:
     def __init__(self,kernel="linear"):
         self.kernel = kernel
         self.model = None
-
-
+        self.name = "SupportVectorMachine"
 
 
     def fit(self,x,y):
@@ -24,6 +23,7 @@ class SupportVectorMachine:
 
     def load_model(self,path):
         self.model = joblib.load(path)
+        return self.model
 
 
     def score(self,x,y):

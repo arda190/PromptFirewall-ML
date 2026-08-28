@@ -5,6 +5,7 @@ class FastTextVectorizer:
     def __init__(self,vector_size=100):
         self.model=None
         self.vector_size =vector_size
+        self.name = "FastText"
 
 
 
@@ -52,8 +53,10 @@ class FastTextVectorizer:
         self.model.save(filename)
 
 
-    def load_model(self,filename):
+    def load_model(self,filename="saved_models/fasttext"):
         self.model=FastText.load(filename)
+        print("model loaded")
+        return self
 
 
 
