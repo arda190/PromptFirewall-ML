@@ -4,4 +4,3 @@ pandas
 scikit-learn
 joblib
 lightgbm
-sentence_transformers
