@@ -4,6 +4,10 @@ import joblib
 
 class TFIDFVectorizer:
     def __init__(self,max_features=None,min_df=1, max_df=1.0,ngram_range=(3,5),**kwargs):
+
+        if isinstance(ngram_range,list):
+            ngram_range = tuple(ngram_range)
+
         self.vectorizer = TfidfVectorizer(
             max_features=max_features,
             min_df=min_df,
