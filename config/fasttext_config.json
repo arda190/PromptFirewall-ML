@@ -1,0 +1,10 @@
+{
+  "vectorizer": "FastText",
+  "vectorizer_params": {
+    "vector_size": 100,
+    "window": 5,
+    "min_count": 1,
+    "workers": 4,
+    "epochs": 10
+  }
+}
