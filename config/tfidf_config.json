@@ -1,0 +1,10 @@
+{
+  "vectorizer": "TF-IDF",
+  "vectorizer_params": {
+    "max_features": 5000,
+    "ngram_range": [3,5],
+    "min_df": 1,
+    "max_df": 1.0,
+    "sublinear_tf": true
+  }
+}
