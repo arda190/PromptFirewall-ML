@@ -3,13 +3,14 @@ import joblib
 
 
 class TFIDFVectorizer:
-    def __init__(self,max_features=None,min_df=1, max_df=1.0,ngram_range=(3,5)):
+    def __init__(self,max_features=None,min_df=1, max_df=1.0,ngram_range=(3,5),**kwargs):
         self.vectorizer = TfidfVectorizer(
             max_features=max_features,
             min_df=min_df,
             max_df=max_df,
-            ngram_range=ngram_range
-        ),
+            ngram_range=ngram_range,
+            **kwargs
+        )
         self.name = "TF-IDF"
 
     def fit(self, sentences):
